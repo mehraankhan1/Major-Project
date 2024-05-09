@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hindi Reviews Detection</title>
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+
+</head>
+
+<body>
+
+    <nav>
+        <br><br><br>
+        <h4 class="mt-4 mb-4" style="color:rgb(231, 232, 235); text-align: center;">Hindi Reviews Detection</h4>
+
+    </nav>
+
+
+
+    <form action="{{ url_for('predict_hindi')}}" method="POST">
+        <div class="contentform">
+            <br>
+            <textarea name="message" rows="5" cols="20" required="required"></textarea>
+            <br> </br>
+            <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+
+            <div class="results">
+
+                {% if prediction == 'spam' %}
+                <h2 style="color:red;">Looking Spam⚠️, Be safe</h2>
+                {% elif prediction == 'ham' %}
+                <h2 style="color:rgb(66, 226, 66);"><b>Not a Spam💚</b></h2>
+                {% endif %}
+                
+                <!-- Display sentiment -->
+                <p>Sentiment Analysis: {{ sentiment }}</p>
+
+            </div>
+
+
+    </form>
+
+    </div>
+
+
+    <style>
+        html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            text-align: center;
+            width: auto;
+            height: 100%;
+            font-family: 'Open Sans', sans-serif;
+            color: #fff;
+            font-size: 18px;
+            text-align: center;
+            letter-spacing: 1.2px;
+            background-repeat: no-repeat !important;
+            background-size: 100% 100% !important;
+            background-size: cover;
+            background-image: url('https://miro.medium.com/v2/resize:fit:5000/1*_PHZ4MPzvtXWRgVQhilGfQ.jpeg');
+
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+
+        .footer {
+            position: fixed;
+
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: rgb(14, 24, 63);
+            color: rgb(255, 255, 255);
+            text-align: center;
+        }
+
+        form {
+            display: inline-block;
+        }
+
+        .login {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            margin: -150px 0 0 -150px;
+            width: 400px;
+            height: 400px;
+        }
+
+        .login h1 {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            background: rgb(156, 208, 226);
+            border: none;
+            outline: none;
+            padding: 10px;
+            font-size: 25px;
+            color: rgb(16, 16, 16);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.2), 0 1px 1px rgba(255, 255, 255, 0.2);
+            -webkit-transition: box-shadow .5s ease;
+            -moz-transition: box-shadow .5s ease;
+            -o-transition: box-shadow .5s ease;
+            -ms-transition: box-shadow .5s ease;
+            transition: box-shadow .5s ease;
+        }
+
+        input:focus {
+            box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.4), 0 1px 1px rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</body>
+
+</html>

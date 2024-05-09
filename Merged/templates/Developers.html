@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developers Page</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+
+            background-image: url("https://miro.medium.com/v2/resize:fit:5000/1*_PHZ4MPzvtXWRgVQhilGfQ.jpeg");
+            animation: fadeIn 1s ease-in-out;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-image: url("https://miro.medium.com/v2/resize:fit:5000/1*_PHZ4MPzvtXWRgVQhilGfQ.jpeg");
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        h1 {
+            text-align: center;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        .member {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            animation: slideIn 1s ease-in-out;
+        }
+        .member h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .member p {
+            margin-bottom: 0;
+            color: #777;
+        }
+
+        /* Keyframe animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="https://miro.medium.com/v2/resize:fit:5000/1*_PHZ4MPzvtXWRgVQhilGfQ.jpeg" target="_blank" rel="noopener noreferrer">
+        <div class="container">
+            <h1>Developers of the project</h1>
+            
+            <div class="member">
+                <h2 style="color: #ff6347;">Mehraan Khan</h2>
+                <p><strong>Position:</strong> Backend Developer</p>
+                <p><strong>Description:</strong> Mehraan Khan developed the Backend using Anaconda and Python. He utilized Jupyter Notebook extensively for machine learning modeling. His expertise in Python programming and data science algorithms significantly contributed to the project's success.</p>
+            </div>
+            
+            <div class="member">
+                <h2 style="color: #4169e1;">Aparajita Karmakar</h2>
+                <p><strong>Position:</strong> Frontend Developer</p>
+                <p><strong>Description:</strong> Aparajita Karmakar played a pivotal role in developing the frontend of the project. With a keen eye for design and proficiency in HTML, CSS, and JavaScript, she crafted intuitive and user-friendly interfaces that enhanced the overall user experience.</p>
+            </div>
+            
+            <div class="member">
+                <h2 style="color: #32cd32;">Nandini Rajan</h2>
+                <p><strong>Position:</strong>Database Developer</p>
+                <p><strong>Description:</strong> Nandini Rajan spearheaded the development of the project's database architecture. Her expertise in database management systems ensured efficient data storage, retrieval, and manipulation. Nandini's meticulous approach and attention to detail contributed to the robustness and scalability of the database.</p>
+            </div>
+        </div>
+    </a>
+</body>
+</html>

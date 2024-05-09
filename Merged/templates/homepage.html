@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Prediction App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="hero">
+        <div class="container">
+            <h1>Fake Review Detection System</h1>
+            <div class="hero-content">
+                <p>Our Fake Review Detection System Web App is designed to detect and flag suspicious reviews across multiple languages,
+                including Hindi and English. Using state-of-the-art machine learning algorithms, our system analyzes text content,
+                identifying patterns and linguistic markers indicative of potential fake or manipulated reviews. The app offers a
+                user-friendly interface where users can input reviews in either Hindi or English, and receive instant feedback on their
+                authenticity. By harnessing the power of natural language processing, our system contributes to a fairer and more
+                trustworthy online review ecosystem, empowering consumers to make informed decisions.</p>
+                <img src="https://miro.medium.com/v2/resize:fit:5000/1*_PHZ4MPzvtXWRgVQhilGfQ.jpeg" alt="App Image">
+            </div>
+            <div class="hero-buttons">
+                <a href="{{ url_for('predict_english') }}" class="button">Predict in English</a>
+                <a href="{{ url_for('predict_hindi') }}" class="button">Predict in Hindi</a>
+                <a href="{{ url_for('about') }}" class="button">Results</a>
+                <a href="{{ url_for('machine_learning_models') }}" class="button">Machine Learning Models</a>
+                <a href="{{ url_for('developers') }}" class="button">Developers</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

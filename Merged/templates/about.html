@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Language Prediction App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
+    
+</head>
+
+<body>
+    <div class="hero">
+        <div class="container">
+            <h1>Results & Findings</h1><br>
+            <h2>English Review Detection</h2>
+            <!-- At the end of the body tag -->
+            <!-- Inside the body tag -->
+
+<canvas id="englishChart" ></canvas>
+<style>
+    canvas {
+        background-color: white;
+        border-radius: 10px;
+        width: 50%;
+        height: 150px;
+    }
+</style>
+            <script> // English Bar Graph
+                var englishData = {
+                    labels: ["GradientBoosting", "LogisticRegression", "Multinomial_NB", "RandomForest", "SVC"],
+                    datasets: [{
+                        label: 'Model Accuracies - English',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1,
+                        data: [0.94, 0.95, 0.92, 0.95, 0.95],
+                    }]
+                };
+            
+                var englishCanvas = document.getElementById('englishChart');
+                englishCanvas.width = 400;
+                englishCanvas.height = 200;
+                englishCanvas.style.backgroundColor = 'white';
+            
+                var englishChart = new Chart(englishCanvas.getContext('2d'), {
+                    type: 'bar',
+                    data: englishData,
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 1
+                            }
+                        },
+                    }
+                });
+            </script>
+            <div class="heros-content">
+                <p>Our Fake Review Detection System Web App is designed to detect and flag suspicious reviews across multiple languages,
+                including Hindi and English. Using state-of-the-art machine learning algorithms, our system analyzes text content,
+                identifying patterns and linguistic markers indicative of potential fake or manipulated reviews. The app offers a
+                user-friendly interface where users can input reviews in either Hindi or English, and receive instant feedback on their
+                authenticity. By harnessing the power of natural language processing, our system contributes to a fairer and more
+                trustworthy online review ecosystem, empowering consumers to make informed decisions.</p>
+            </div><br>
+            <h2>Hindi Review Detection</h2>
+            <canvas id="hindiChart" ></canvas>
+            <script>
+                // Hindi Bar Graph
+                var hindiData = {
+                    labels: ["GradientBoosting", "LogisticRegression", "Multinomial_NB", "RandomForest", "SVC"],
+                    datasets: [{
+                        label: 'Model Accuracies - Hindi',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
+                        data: [0.92, 0.92, 0.91, 0.94, 0.82],
+                    }]
+                };
+            
+                var hindiCanvas = document.getElementById('hindiChart');
+                hindiCanvas.width = 400;
+                hindiCanvas.height = 200;
+                hindiCanvas.style.backgroundColor = 'white';
+            
+                var hindiChart = new Chart(hindiCanvas.getContext('2d'), {
+                    type: 'bar',
+                    data: hindiData,
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 1
+                            }
+                        },
+                    }
+                }); </script>
+            <div class="heros-content">
+                <p>Our Fake Review Detection System Web App is designed to detect and flag suspicious reviews across multiple languages,
+                including Hindi and English. Using state-of-the-art machine learning algorithms, our system analyzes text content,
+                identifying patterns and linguistic markers indicative of potential fake or manipulated reviews. The app offers a
+                user-friendly interface where users can input reviews in either Hindi or English, and receive instant feedback on their
+                authenticity. By harnessing the power of natural language processing, our system contributes to a fairer and more
+                trustworthy online review ecosystem, empowering consumers to make informed decisions.</p>
+            </div>
+            <br>
+            <div class="hero-buttons">
+                <a href="{{ url_for('home') }}" class="button">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

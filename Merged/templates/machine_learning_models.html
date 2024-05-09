@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Models</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="hero">
+        <div class="container">
+            <h1>Machine Learning Models</h1>
+        </div>
+    </div>
+
+    <div class="hero-buttons">
+        <!-- Buttons for each model -->
+        <button onclick="showModelInfo('GradientBoosting')">Gradient Boosting</button>
+        <button onclick="showModelInfo('LogisticRegression')">Logistic Regression</button>
+        <button onclick="showModelInfo('MultinomialNB')">Multinomial Naive Bayes</button>
+        <button onclick="showModelInfo('RandomForest')">Random Forest</button>
+        <button onclick="showModelInfo('SVC')">Support Vector Classifier</button>
+        <button onclick="compareAllModels()">Compare All</button>
+        <!-- Container to display model information and bar graph -->
+        <div id="modelInfoContainer"></div>
+        <div id="barGraphContainer"></div>
+    </div>
+    <div class="resize">
+        <div id="modelInfoContainer"></div>
+        <div id="barGraphContainer">
+            <canvas id="barGraph" width="300" height="180" style="background-color: white;"></canvas>
+        </div>
+    </div>
+</div>
+<style>
+    canvas{
+        border-radius: 15px;
+    }
+    .resize{
+        margin-bottom: 50px;
+        margin-left: 60px;
+        height: 350px;
+        width: 550px;
+
+    }
+    button{
+     margin-left: 60px;
+    border: 1px solid #002633;
+    display: inline-block;
+    font-size: 18px;
+    margin: 10px;
+    padding: 10px 20px;
+    background: #00b5a6; /* Red */
+    color: #fff; /* White */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+button:hover {
+    background: #005881; /* Blue on hover */
+    color: #fff; /* White on hover */
+}
+h2,p{
+    margin-left: 60px;
+    color: white;
+}
+
+</style>
+<script>
+    var barGraph;
+
+    function showModelInfo(modelName) {
+        var modelInfoContainer = document.getElementById('modelInfoContainer');
+        var barGraphCanvas = document.getElementById('barGraph');
+
+        modelInfoContainer.innerHTML = ''; // Clear previous content
+
+        var englishAccuracy = 0;
+        var hindiAccuracy = 0;
+        var modelImageSrc = '';
+        var modelInfo = '';
+
+        // Assign accuracy values based on the selected model
+        if (modelName === 'GradientBoosting') {
+            englishAccuracy = 0.9387755102040817;
+            hindiAccuracy = 0.9185667752442996;
+            modelImageSrc = 'https://1394217531-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LvBP1svpACTB1R1x_U4%2F-Lw6zezdliKWkGknCJ6R%2F-Lw70EB_T-Y3OCO-L_4o%2Fimage.png?alt=media&token=a3edaf4a-d3d2-4c84-9a10-3d870c21d641';
+            modelInfo = 'Gradient Boosting is a machine learning technique for regression and classification problems.';
+        } else if (modelName === 'LogisticRegression') {
+            englishAccuracy = 0.9566326530612245;
+            hindiAccuracy = 0.9218241042345277;
+            modelImageSrc = 'https://static.javatpoint.com/tutorial/machine-learning/images/logistic-regression-in-machine-learning.png';
+            modelInfo = '';
+        } else if (modelName === 'MultinomialNB') {
+            englishAccuracy = 0.923469387755102;
+            hindiAccuracy = 0.9153094462540716;
+            modelImageSrc = '';
+            modelInfo = '';
+        } else if (modelName === 'RandomForest') {
+            englishAccuracy = 0.951530612244898;
+            hindiAccuracy = 0.9446254071661238;
+            modelImageSrc = '';
+            modelInfo = '';
+        } else if (modelName === 'SVC') {
+            englishAccuracy = 0.9540816326530612;
+            hindiAccuracy = 0.9283387622149837;
+            modelImageSrc = '';
+            modelInfo = '';
+        }
+
+        modelInfoContainer.innerHTML = `<h2>Accuracy Comparison</h2>
+            <p>English Accuracy: ${englishAccuracy}</p>
+            <p>Hindi Accuracy: ${hindiAccuracy}</p>`;
+         
+            modelInfoContainer.innerHTML = `<h2 style="color: white;">${modelName}</h2>
+            <p style="font-weight: bold; color: #555;">Accuracy Comparison</p>
+            <p>English Accuracy: <span style="color: green;">${englishAccuracy}</span></p>
+            <p>Hindi Accuracy: <span style="color: green;">${hindiAccuracy}</span></p>
+            <img src="${modelImageSrc}" alt="${modelName}" style="max-width: 500px; max-height: 400px; margin-left: 60px;">
+            <p style="font-style: italic; color: white;">${modelInfo}</p>`;
+        // Destroy the existing chart instance
+        if (barGraph) {
+            barGraph.destroy();
+        }
+
+        // Create a new bar graph
+        barGraph = new Chart(barGraphCanvas, {
+            type: 'bar',
+            data: {
+                labels: ['English', 'Hindi'],
+                datasets: [{
+                    label: 'Model Accuracy',
+                    backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+                    borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],
+                    borderWidth: 1,
+                    data: [englishAccuracy, hindiAccuracy],
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 1
+                    }
+                }
+            }
+        });
+    }
+
+    function compareAllModels() {
+        var modelInfoContainer = document.getElementById('modelInfoContainer');
+        var barGraphCanvas = document.getElementById('barGraph');
+
+        modelInfoContainer.innerHTML = ''; // Clear previous content
+
+        // Accuracy values for all models
+        var accuracyData = {
+            'GradientBoosting': [0.9387755102040817, 0.9185667752442996],
+            'LogisticRegression': [0.9566326530612245, 0.9218241042345277],
+            'MultinomialNB': [0.923469387755102, 0.9153094462540716],
+            'RandomForest': [0.951530612244898, 0.9446254071661238],
+            'SVC': [0.9540816326530612, 0.9283387622149837],
+        };
+
+        // Display the results for all models
+        modelInfoContainer.innerHTML = `<h2>Accuracy Comparison</h2>
+            <p>Comparison of all models:</p>`;
+
+        // Destroy the existing chart instance
+        if (barGraph) {
+            barGraph.destroy();
+        }
+
+        // Create a new bar graph for all models
+        barGraph = new Chart(barGraphCanvas, {
+            type: 'bar',
+            data: {
+                labels: ['GradientBoosting', 'LogisticRegression', 'MultinomialNB', 'RandomForest', 'SVC'],
+                datasets: [{
+                    label: 'English Accuracy',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    data: [
+                        accuracyData['GradientBoosting'][0],
+                        accuracyData['LogisticRegression'][0],
+                        accuracyData['MultinomialNB'][0],
+                        accuracyData['RandomForest'][0],
+                        accuracyData['SVC'][0],
+                    ],
+                }, {
+                    label: 'Hindi Accuracy',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    data: [
+                        accuracyData['GradientBoosting'][1],
+                        accuracyData['LogisticRegression'][1],
+                        accuracyData['MultinomialNB'][1],
+                        accuracyData['RandomForest'][1],
+                        accuracyData['SVC'][1],
+                    ],
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 1
+                    }
+                }
+            }
+        });
+    }
+
+</script>
+
+</html>
